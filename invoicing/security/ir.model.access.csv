@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_invoice,access_invoice,model_invoice,,1,1,1,1
+access_invoice_line,access_invoice_line,model_invoice_line,,1,1,1,1
+access_payment,access_payment,model_payment,,1,1,1,1

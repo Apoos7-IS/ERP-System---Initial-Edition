@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id = "inventory_management_root_menu"
+        name = "Inventory Management"
+        web_icon = "inventory_management, static/description/icon.png"
+    />
+
+    <menuitem
+        id = "sections_main_menu"
+        name = "Sections"
+        parent = "inventory_management_root_menu"
+    />
+</odoo>

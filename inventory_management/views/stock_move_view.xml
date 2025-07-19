@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id = "stock_move_view_search" model = "ir.ui.view">
+        <field name = "name">stock move view search</field>
+        <field name = "model">stock.move</field>
+        <field name = "arch" type = "xml">
+            <search>
+                <field name = "product_id"/>
+                <field name = "source_location_id"/>
+                <field name = "dest_location_id"/>
+
+                <filter
+                    name = "in_filter" string = "Incoming"
+                    domain = "[('move_type', '=', 'in')]"
+                />
+                <filter
+                    name = "out_filter" string = "Outgoing"
+                    domain = "[('move_type', '=', 'out')]"
+                />
+                <filter
+                    name = "internal_filter" string = "Internal Transfer"
+                    domain = "[('move_type', '=', 'internal')]"
+                />
+
+
+                <filter
+                    name = "group_source_location" string = "Source Location"
+                    context = "{'group_by': 'source_location_id'}"
+                />
+                <filter
+                    name = "group_dest_location" string = "Dest Location"
+                    context = "{'group_by': 'dest_location_id'}"
+                />
+            </search>
+        </field>
+    </record>
+
+    <record id = "stock_move_view_form" model = "ir.ui.view">
+        <field name = "name">stock move view form</field>
+        <field name = "model">stock.move</field>
+        <field name = "arch" type = "xml">
+            <form>
+                <sheet>
+                    <div class = "oe_title">
+                        <label for = "product_id"/>
+                        <h1>
+                            <field name = "product_id"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name = "quantity"/>
+                        <field name = "source_location_id"/>
+                        <field name = "dest_location_id"/>
+                        <field name = "date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id = "stock_move_view_tree" model = "ir.ui.view">
+        <field name = "name">stock move view tree</field>
+        <field name = "model">stock.move</field>
+        <field name = "arch" type = "xml">
+            <tree>
+                <field name = "product_id"/>
+                <field name = "quantity"/>
+                <field name = "source_location_id"/>
+                <field name = "dest_location_id"/>
+                <field name = "move_type"/>
+                <field name = "date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id = "stock_move_action" model = "ir.actions.act_window">
+        <field name = "name">Stock Move</field>
+        <field name = "res_model">stock.move</field>
+    </record>
+
+    <menuitem
+        id = "stock_move_menu_item"
+        name = "Stock Move"
+        parent = "sections_main_menu"
+        action = "stock_move_action"
+    />
+</odoo>

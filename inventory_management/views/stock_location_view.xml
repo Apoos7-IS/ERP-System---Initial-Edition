@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id = "stock_location_view_search" model = "ir.ui.view">
+        <field name = "name">stock location view search</field>
+        <field name = "model">stock.location</field>
+        <field name = "arch" type = "xml">
+            <search>
+                <field name = "name"/>
+
+                <filter
+                    name = "internal_filter" string = "Internal"
+                    domain = "[('location_type', '=', 'internal')]"
+                />
+                <filter
+                    name = "supplier_filter" string = "Supplier"
+                    domain = "[('location_type', '=', 'supplier')]"
+                />
+                <filter
+                    name = "customer_filter" string = "Customer"
+                    domain = "[('location_type', '=', 'customer')]"
+                />
+                <filter
+                    name = "retail_outlet_filter" string = "Retail Outlet"
+                    domain = "[('location_type', '=', 'retail_outlet')]"
+                />
+                <filter
+                    name = "main_warehouse_filter" string = "Main Warehouse"
+                    domain = "[('location_type', '=', 'main_warehouse')]"
+                />
+
+                <filter
+                    name = "group_is_active" string = "Is Active"
+                    context = "{'group_by': 'is_active'}"
+                />
+            </search>
+        </field>
+    </record>
+
+    <record id = "stock_location_view_form" model = "ir.ui.view">
+        <field name = "name">stock location view form</field>
+        <field name = "model">stock.location</field>
+        <field name = "arch" type = "xml">
+            <form>
+                <sheet>
+                    <div class = "oe_title">
+                        <label for = "name"/>
+                        <h1>
+                            <field name = "name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name = "location_type"/>
+                        <field name = "is_active"/>
+                        <field name = "note"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id = "stock_location_view_tree" model = "ir.ui.view">
+        <field name = "name">stock location view tree</field>
+        <field name = "model">stock.location</field>
+        <field name = "arch" type = "xml">
+            <tree>
+                <field name = "name"/>
+                <field name = "location_type"/>
+                <field name = "is_active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id = "stock_location_action" model = "ir.actions.act_window">
+        <field name = "name">Stock Location</field>
+        <field name = "res_model">stock.location</field>
+    </record>
+
+    <menuitem
+        id = "stock_location_menu_item"
+        name = "Stock Location"
+        parent = "sections_main_menu"
+        action = "stock_location_action"
+    />
+</odoo>

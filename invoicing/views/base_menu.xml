@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id = "invoicing_root_menu"
+        name = "My Invoicing"
+        web_icon = "invoicing, static/description/icon.png"
+    />
+
+    <menuitem
+        id = "sections_main_menu"
+        name = "Sections"
+        parent = "invoicing_root_menu"
+    />
+</odoo>

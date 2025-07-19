@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id = "product_view_search" model = "ir.ui.view">
+        <field name = "name">product view search</field>
+        <field name = "model">product</field>
+        <field name = "arch" type = "xml">
+            <search>
+                <field name = "sku"/>
+                <field name = "name"/>
+
+                <filter name = "is_active_filter" string = "Is Active"
+                        domain = "[('is_active', '=', True)]"/>
+
+                <filter name = "group_catigory" string = "Category"
+                        context = "{'group_by': 'category_id'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id = "product_view_form" model = "ir.ui.view">
+        <field name = "name">product view tree</field>
+        <field name = "model">product</field>
+        <field name = "arch" type = "xml">
+            <form>
+                <sheet>
+                    <div class = "oe_title">
+                        <label for = "name"/>
+                        <h1>
+                            <field name = "name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name = "sku"/>
+                        <field name = "description"/>
+                        <field name = "category_id"/>
+                        <field name = "quantity_available"/>
+                        <field name = "sale_price"/>
+                        <field name = "cost_price"/>
+                        <field name = "is_active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id = "product_view_tree" model = "ir.ui.view">
+        <field name = "name">product view tree</field>
+        <field name = "model">product</field>
+        <field name = "arch" type = "xml">
+            <tree>
+                <field name = "sku"/>
+                <field name = "name"/>
+                <field name = "quantity_available"/>
+                <field name = "sale_price"/>
+                <field name = "is_active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id = "product_action" model = "ir.actions.act_window">
+        <field name = "name">Product</field>
+        <field name = "res_model">product</field>
+    </record>
+
+    <menuitem
+        id = "product_menu_item"
+        name = "Product"
+        parent = "sections_main_menu"
+        action = "product_action"
+    />
+</odoo>
