@@ -1,4 +1,4 @@
-# ERP-System---Initial-Edition
+# ERP-System-Initial-Edition
 A simplified ERP system consisting of two interconnected modules: Inventory Management and Invoicing.
 
 Inventory Management: Includes four core models (Product, Product Category, Stock Location, and Stock Move)
